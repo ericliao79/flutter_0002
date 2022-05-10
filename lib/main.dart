@@ -49,36 +49,33 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: CustomScrollView(slivers: <Widget>[
-
+    return Scaffold(
+        body: CustomScrollView(slivers: <Widget>[
       SliverAppBar(
-        pinned: true,
-        floating: false,
-        snap: false,
-        expandedHeight: 200,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back), onPressed: () {  },
-        ),
-        flexibleSpace: FlexibleSpaceBar(
-          collapseMode: CollapseMode.pin,
-          centerTitle: true,
-          title: Text("SliverAppBar Demo", style: Theme.of(context).textTheme.headline6),
-          background:  Image.asset("assets/img/ricardo.png", fit: BoxFit.fill),
-        )
-      ),
-
-      SliverFixedExtentList(delegate: new SliverChildBuilderDelegate(
-
-          (BuildContext context, int index) => new ListTile(
-                title: new Text("Item $index"),
-              ),
-      ), itemExtent: 50)
-
-
-
+          pinned: true,
+          floating: false,
+          snap: false,
+          expandedHeight: 200,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {},
+          ),
+          flexibleSpace: FlexibleSpaceBar(
+            collapseMode: CollapseMode.pin,
+            centerTitle: true,
+            title: Text("SliverAppBar Demo",
+                style: Theme.of(context).textTheme.headline6),
+            background: Image.asset("assets/img/ricardo.png", fit: BoxFit.fill),
+          )),
+      SliverFixedExtentList(
+          delegate: SliverChildBuilderDelegate(
+            (BuildContext context, int index) => ListTile(
+              title: Text("Item $index"),
+            ),
+          ),
+          itemExtent: 50)
     ]));
   }
 }
